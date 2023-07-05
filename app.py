@@ -1,8 +1,11 @@
-python
-import datetime
+import os
+from flask import Flask, request
 
-# Получаем текущую дату и время
-current_date = datetime.datetime.now()
+app = Flask(__name__)
 
-# Выводим текущую дату
-print("Сегодняшняя дата:", current_date.date())
+@app.route('/')
+def index():
+    return f'data'
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0')
