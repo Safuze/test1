@@ -1,8 +1,11 @@
-name: Push Date Test
-run-name: Run Push Date Test
-on: push
+name: Pull Request To Dev
+run-name: Run Integration Tests
+on:
+  push:
+    branches:
+      - '0071'
 jobs:
-  date_testing:
+  integration_testing:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -10,13 +13,8 @@ jobs:
       - name: Install requirements
         run: pip install -r requirements.txt
       - name: Run app
-        run: python3 hello.app/app.py &
-      - name: Run sleep
-        run: sleep 3s
-        shell: bash
-      - name: Test GET-request
+        run: python3 ./hello.app/app.py &
+      - name: Run tests
         run: |
           chmod +x ./test/data.sh
           ./test/data.sh
-        shell: bash
-
